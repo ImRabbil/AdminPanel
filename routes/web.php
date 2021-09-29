@@ -59,12 +59,44 @@ Route::get('/pay-salary', 'SalaryController@PaySalary')->name('pay.salary');
 
 
 
+//Category routee are here==============================
+
+Route::get('/add-category', 'CategoryController@AddCategory')->name('add.category');
+Route::post('/insert-category', 'CategoryController@InsertCategory');
+Route::get('/all-category', 'CategoryController@AllCategory')->name('all.category');
+Route::get('/delete-category/{id}', 'CategoryController@DeleteCategory');
+Route::get('/edit-category/{id}', 'CategoryController@EditCategory');
+Route::post('/update-category/{id}', 'CategoryController@UpdateCategory');
+
+
+
+
+
+//Product route are here---------------------------
+
+Route::get('/add-product', 'ProductController@AddProduct')->name('add.product');
+Route::post('/insert-product', 'ProductController@InsertProduct');
+Route::get('/all-product', 'ProductController@AllProduct')->name('all.product');
+// Route::get('/delete-category/{id}', 'CategoryController@DeleteCategory');
+// Route::get('/edit-category/{id}', 'CategoryController@EditCategory');
+// Route::post('/update-category/{id}', 'CategoryController@UpdateCategory');
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 
  
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
