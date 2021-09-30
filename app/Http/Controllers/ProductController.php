@@ -94,6 +94,133 @@ class ProductController extends Controller
 
     }
 
+   public function DeleteProduct($id){
+       //  $delete = DB::table('employees')->where('id',$id)->first();
+       
+       //  $photo=$delete->photo;
+
+        
+
+       // unlink($photo);
+       $dltuser = DB::table('products')->where('id',$id)->delete();
+        return redirect()->route('all.product');
+         }
+
+
+         public function ViewProduct($id)
+         {
+            $view = DB::table('products')
+                 ->join('categories','products.cat_id','categories.id')
+                 ->join('suppliers','products.sup_id','suppliers.id')
+                 ->select('categories.cat_name','products.*','suppliers.name')
+                 ->where('products.id',$id)
+                 ->first();
+
+        // echo "<pre>";
+        // print_r($view);
+        // exit();
+                 return view('view_product', compact('view'));
+         }
+
+         public function EditProduct($id)
+         {
+            $prod = DB::table('products')->where('id',$id)->first();
+            return view('edit_product', compact('prod'));
+            
+         }
+
+
+         public function UpdateProduct(Request $request, $id)
+         {
+            $data = array();
+        $data['product_name'] = $request->product_name;
+        $data['product_code'] = $request->product_code;
+        $data['cat_id'] = $request->cat_id;
+        $data['sup_id'] = $request->sup_id;
+        $data['product_garage'] = $request->product_garage;
+        $data['product_route'] = $request->product_route;
+        $data['buy_date'] = $request->buy_date;
+        $data['expire_date'] = $request->expire_date;
+        $data['buying_price'] = $request->buying_price;
+        $data['selling_price'] = $request->selling_price;
+
+         $product = DB::table('products')->where('id',$id)->update($data);
+
+
+                if($product){
+                    $notification = array(
+                        'messege'=>'Succesfully Advanced Paid',
+                         'alert-type'=>'success'
+                    );
+                    return Redirect()->route('all.product')->with($notification);
+                }else{
+                   $notification = array(
+                        'messege'=>'Error', 
+                        'alert-type'=>'success'
+                    );
+                   return Redirect()->back()->with($notification);
+
+                }
+
+
+
+        // echo "<pre>";
+        // print_r($data);
+        // exit();
+        //          $image = $request->file('product_image');
+
+        // if($image){
+        //     $image_name = str::random(5);
+        //     $ext = strtolower($image->getClientOriginalExtension());
+        //     $image_full_name = $image_name.'.' .$ext;
+        //     $upload_path = 'public/product/';
+        //     $image_url=$upload_path.$image_full_name;
+        //     $success=$image->move($upload_path,$image_full_name);
+
+        //     if($success){
+        //         $data['product_image']=$image_url;
+        //         $img=DB::table('products')->where('id',$id)->first();
+        //         $image_path = $img->product_image;
+        //         $done = unlink($image_path);
+        //         $product = DB::table('products')->where('id',$id)->update($data);
+
+        //         if($product){
+        //             $notification = array(
+        //                 'messege'=>'Succesfully Employee Inserted',
+        //                  'alert-type'=>'success'
+        //             );
+        //             return Redirect()->route('all.product')->with($notification);
+        //         }else{
+
+        //                      return Redirect()->back();
+
+        //         }
+
+        //     }
+        // }
+        // else{
+        //     $op = $request->old_photo;
+        //     if ($op) {
+        //         $data['product_image'] =$op;
+        //          $user = DB::table('products')->where('id',$id)->update($data);
+        //          if($user){
+        //             $notification = array(
+        //                 'messege'=>'Succesfully Employee Inserted',
+        //                  'alert-type'=>'success'
+        //             );
+        //             return Redirect()->route('all.product')->with($notification);
+        //         }else{
+
+        //                      return Redirect()->back();
+
+        //         }
+
+        //     }
+        // }
+
+         }
+
+
 }
 
 

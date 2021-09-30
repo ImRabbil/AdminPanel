@@ -49,7 +49,7 @@
                                                             <td>{{ $row->selling_price}}</td>
                                                             <td>{{ $row->product_garage}}</td>
                                                             <td>{{ $row->product_route}}</td>
-                                                            <td><img src="{{URL::to('$row->product_image') }}" style="height: 60px; width: 60px;"></td>
+                                                            <td><img src="{{URL::to('$row->product_image') }}" ></td>
                                                             <td>
                                                                 <a href="{{URL::to('edit-product/'.$row->id)}}" class="btn btn-sm btn-info">Edit</a>
                                                                 <a href="{{URL::to('delete-product/'.$row->id)}}" id="delete" class="btn btn-sm btn-danger">Delete</a>

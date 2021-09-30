@@ -215,8 +215,8 @@
                              <li class="has_sub">
                                 <a href="#" class="waves-effect"><i class="fas fa-users"></i><span> Categories </span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
-                                    {{-- <li><a href="{{ route('add.category')}}">Add Category</a></li>
-                                    <li><a href="{{ route('all.category')}}">All Category</a></li> --}}
+                                    <li><a href="{{ route('add.category')}}">Add Category</a></li>
+                                    <li><a href="{{ route('all.category')}}">All Category</a></li>
                                 </ul>
                             </li>
 

@@ -77,9 +77,10 @@ Route::post('/update-category/{id}', 'CategoryController@UpdateCategory');
 Route::get('/add-product', 'ProductController@AddProduct')->name('add.product');
 Route::post('/insert-product', 'ProductController@InsertProduct');
 Route::get('/all-product', 'ProductController@AllProduct')->name('all.product');
-// Route::get('/delete-category/{id}', 'CategoryController@DeleteCategory');
-// Route::get('/edit-category/{id}', 'CategoryController@EditCategory');
-// Route::post('/update-category/{id}', 'CategoryController@UpdateCategory');
+Route::get('/delete-product/{id}', 'ProductController@DeleteProduct');
+Route::get('/view-product/{id}', 'ProductController@ViewProduct');
+Route::get('/edit-product/{id}', 'ProductController@EditProduct');
+Route::post('/update-product/{id}', 'ProductController@UpdateProduct');
 
 
 

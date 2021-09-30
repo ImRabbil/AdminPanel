@@ -22,53 +22,52 @@
                           <div class="col-md-2"></div>
                             <div class="col-md-8">
                                 <div class="panel panel-default">
-                                    <div class="panel-heading"><h3 class="panel-title">View Details Employee</h3></div>
-                                    <div class="panel-body">
+                                    <div class="panel-heading"><h3 class="panel-title">View Product</h3></div>
+                                        <div class="panel-body">
                                         <form role="form">
-                                    
+                                            <img src="{{ URL::to($view->product_image)}}">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Name</label>
-                                                <p>{{ $single->name}}</p>
+                                                <label for="exampleInputEmail1"> Product Name</label>
+                                                <p>{{ $view->product_name}}</p>
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputPassword1">Email</label>
-                                                <p>{{ $single->email}}</p>
+                                                <label for="exampleInputPassword1">Product Code</label>
+                                                <p>{{ $view->product_code}}</p>
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputPassword1">Phone</label>
-                                               <p>{{ $single->phone}}</p>
+                                                <label for="exampleInputPassword1">Category</label>
+                                               <p>{{ $view->cat_name}}</p>
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputPassword1">Address</label>
-                                                <p>{{ $single->address}}</p>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputPassword1">Experience</label>
-                                                <p>{{ $single->experience}}</p>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputPassword1">NID NO.</label>
-                                                <p>{{ $single->nid_no}}</p>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputPassword1">Salary</label>
-                                               <p>{{ $single->salary}}</p>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputPassword1">Vacation</label>
-                                               <p>{{ $single->vacation}}</p>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputPassword1">City</label>
-                                                <p>{{ $single->city}}</p>
-                                            </div>
-                                            <div class="form-group">
-                                                <img src="{{ URL::to($single->photo)}}"  >
-                                                <label for="exampleInputPassword1">Photo</label>
-                                                
+                                                <label for="exampleInputPassword1">Suppliers</label>
+                                               <p>{{ $view->name}}</p>
                                             </div>
                                             
-                                            
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">Stock House</label>
+                                                <p>{{ $view->product_garage}}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">Product Route</label>
+                                                <p>{{ $view->product_route}}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">Buy Date</label>
+                                                <p>{{ $view->buy_date}}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">Expire Date</label>
+                                                <p>{{ $view->expire_date}}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">Buying Price</label>
+                                                <p>{{ $view->buying_price}}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">Selling Price</label>
+                                                <p>{{ $view->selling_price}}</p>
+                                            </div>
+                                           
                                         </form>
                                     </div><!-- panel-body -->
                                 </div> <!-- panel -->
@@ -80,6 +79,4 @@
                                
                 </div> <!-- content -->
 
-
-               
 @endsection
