@@ -178,6 +178,9 @@
                             <li>
                                 <a href="{{ route('home')}}" class="waves-effect active"><i class="md md-home"></i><span> Dashboard </span></a>
                             </li>
+                            <li>
+                                <a href="{{ route('home')}}" class="waves-effect "><i class="fas fa-universal-access"></i><span class="text-primary"><b>POS</b>  </span></a>
+                            </li>
 
                             <li class="has_sub">
                                 <a href="#" class="waves-effect"><i class="fas fa-users"></i><span> Employees </span><span class="pull-right"><i class="md md-add"></i></span></a>
@@ -188,7 +191,8 @@
                             </li>
 
                             <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="fas fa-users"></i><span> Customers </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <a href="#" class="waves-effect"><i class="fa fa-user" aria-hidden="true"></i>
+                                   <span> Customers </span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="{{ route('add.customer')}}">Add Customer</a></li>
                                     <li><a href="{{ route('all.customer')}}">All Customer</a></li>
@@ -196,14 +200,14 @@
                             </li>
 
                             <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="fas fa-users"></i><span> Suppliers </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <a href="#" class="waves-effect"><i class="fas fa-user-circle"></i><span> Suppliers </span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="{{ route('add.supplier')}}">Add Supplier</a></li>
                                     <li><a href="{{ route('all.supplier')}}">All Supplier</a></li>
                                 </ul>
                             </li>
                             <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="fas fa-users"></i><span> Salary(EMP) </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <a href="#" class="waves-effect"><i class="fa fa-money" aria-hidden="true"></i><span> Salary(EMP) </span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="{{ route('add.advancedsalary')}}">Add Advanced Salary</a></li>
                                     <li><a href="{{ route('all.advancedsalary')}}">All Advanced Salary</a></li>
@@ -213,15 +217,17 @@
                             </li>
 
                              <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="fas fa-users"></i><span> Categories </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <a href="#" class="waves-effect"><i class="fa fa-list-alt" aria-hidden="true"></i> Categories </span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="{{ route('add.category')}}">Add Category</a></li>
                                     <li><a href="{{ route('all.category')}}">All Category</a></li>
                                 </ul>
+
                             </li>
 
                             <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="fas fa-users"></i><span> Products </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <a href="#" class="waves-effect"><i class="fa fa-product-hunt" aria-hidden="true"></i>
+                                  <span> Products </span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="{{ route('add.product')}}">Add Product</a></li>
                                     <li><a href="{{ route('all.product')}}">All Product</a></li>
@@ -229,27 +235,42 @@
                             </li>
 
 
-
-
-                            <li>
-                                <a href="calendar.html" class="waves-effect"><i class="md md-event"></i><span> Calendar </span></a>
-                            </li>
-
-                            <li class="">
-                                <a href="elements.html" class="waves-effect"><i class="md md-event"></i> <span> Elements </span> </a>
-                            </li>
-
-                            
                             <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="md md-place"></i><span> Maps </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <a href="#" class="waves-effect"><i class="fas fa-dollar-sign"></i><span> Expenses</span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="gmap.html"> Google Map</a></li>
-                                    <li><a href="vector-map.html"> Vector Map</a></li>
+                                    <li><a href="{{ route('add.expense')}}">Add Expense</a></li>
+                                    <li><a href="{{ route('today.expense')}}">Today Expense</a></li>
+                                     <li><a href="{{ route('monthly.expense')}}">Monthly Expense</a></li>
+                                     <li><a href="{{ route('yearly.expense')}}">Yearly Expense</a></li>
                                 </ul>
                             </li>
-                             <li class="">
-                                <a href="elements.html" class="waves-effect"><i class="md md-event"></i> <span> Report </span> </a>
+
+                            <li class="has_sub">
+                                <a href="#" class="waves-effect"><i class="fas fa-balance-scale"></i><span> Sales Report</span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="">Add Expense</a></li>
+                                    <li><a href="">Today Expense</a></li>
+                                     <li><a href="">Monthly Expense</a></li>
+                                     <li><a href="">Yearly Expense</a></li>
+                                </ul>
                             </li>
+
+                             <li class="has_sub">
+                                <a href="#" class="waves-effect"><i class="fas fa-user-check"></i><span> Attendance</span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="{{ route('take.attendance')}}">Take Attendace</a></li>
+                                    <li><a href="{{ route('all.attendance')}}">All Attendance</a></li>
+                                     
+                                </ul>
+                            </li>
+                            <li class="has_sub">
+                                <a href="#" class="waves-effect"><i class="fas fa-cog"></i><span> Setting</span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="{{ route('setting')}}">Add Expense</a></li>
+                                   
+                                </ul>
+                            </li>
+
 
                            
                         </ul>

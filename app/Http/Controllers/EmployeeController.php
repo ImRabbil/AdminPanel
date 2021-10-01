@@ -81,12 +81,7 @@ class EmployeeController extends Controller
                         'messege'=>'Error', 
                         'alert-type'=>'success'
                     );
-
-   
-
-
-
-                   return Redirect()->back()->with($notification);
+                         return Redirect()->back()->with($notification);
 
                 }
 

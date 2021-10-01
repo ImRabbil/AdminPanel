@@ -82,9 +82,34 @@ Route::get('/view-product/{id}', 'ProductController@ViewProduct');
 Route::get('/edit-product/{id}', 'ProductController@EditProduct');
 Route::post('/update-product/{id}', 'ProductController@UpdateProduct');
 
+// Expense route are here------------------------------
+
+Route::get('/add-expense', 'ExpenseController@AddExpense')->name('add.expense');
+Route::post('/insert-expense', 'ExpenseController@InsertExpense');
+Route::get('/today-expense', 'ExpenseController@TodayExpense')->name('today.expense');
+Route::get('/edit-today-expense/{id}', 'ExpenseController@EditTodayExpense');
+Route::post('/update-expense/{id}', 'ExpenseController@UpdateExpense');
+Route::get('/monthly-expense', 'ExpenseController@MonthlyExpense')->name('monthly.expense');
+Route::get('/yearly-expense', 'ExpenseController@YearlyExpense')->name('yearly.expense');
+Route::get('/january-expense', 'ExpenseController@JanuaryExpense')->name('january.expense');
+Route::get('/october-expense', 'ExpenseController@OctoberExpense')->name('october.expense');
 
 
 
+//Attendance Route are here---------------------------------------
+
+Route::get('/take-attendance', 'AttendanceController@TakeAttendance')->name('take.attendance');
+Route::post('/insert-attendance', 'AttendanceController@InsertAttendance');
+Route::get('/all-attendance', 'AttendanceController@AllAttendance')->name('all.attendance');
+Route::get('/edit-attendance/{edit_date}', 'AttendanceController@EditAttendance');
+
+
+
+
+
+
+//setting route are here======================================
+Route::get('/website-setting', 'AttendanceController@WebsiteSetting')->name('setting');
 
 
 
