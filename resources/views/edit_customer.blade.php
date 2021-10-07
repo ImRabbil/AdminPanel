@@ -24,7 +24,7 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading"><h3 class="panel-title">Update Customer Information</h3></div>
                                     <div class="panel-body">
-                                        <form role="form" action="{{ url('/update-customer/.$edit->id') }}" method="post" enctype="multipart/form-data">
+                                        <form role="form" action="{{ url('/update-customer/'.$edit->id) }}" method="post" enctype="multipart/form-data">
                                            {{ csrf_field() }} 
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Name</label>
@@ -38,11 +38,11 @@
                                                 <label for="exampleInputPassword1">Phone</label>
                                                 <input type="text" class="form-control" name="phone" value="{{$edit->phone}}" required>
                                             </div>
-                                            {{-- <div class="form-group">
+                                            <div class="form-group">
                                                 <label for="exampleInputPassword1">Address</label>
                                                 <input type="text" class="form-control" name="address" value="{{$edit->address}}" required>
                                             </div>
-                                            <div class="form-group">
+                                            {{-- <div class="form-group">
                                                 <label for="exampleInputPassword1">Experience</label>
                                                 <input type="text" class="form-control" name="experience" value="{{$edit->experience}}" required>
                                             </div>
@@ -61,12 +61,25 @@
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">City</label>
                                                 <input type="text" class="form-control" name="city" value="{{$edit->city}}" required>
-                                            </div>
-                                            <div class="form-group">
+                                            </div> --}}
+                                            {{-- <div class="form-group">
                                                 <img src="" id="image" >
                                                 <label for="exampleInputPassword1">Photo</label>
                                                 <input type="file" name="photo"accept="image/*" class="upload" required onchange="readURL(this);" >
                                             </div> --}}
+
+                                            
+                                            <div class="form-group">
+                                                <img src="#" id="image" >
+                                                <label for="exampleInputPassword1">New Photo</label>
+                                                <input type="file" name="photo"accept="image/*" class="upload" required onchange="readURL(this);" >
+                                            </div>
+
+                                            <div class="form-group">
+                                                <img src="{{URL::to($edit->photo)}}" style="height:60px; width:60px;" >
+                                                <input type="hidden" name="old_photo" value="{{$edit->photo}}">
+                                                
+                                            </div>
                                             
                                             <button type="submit" class="btn btn-purple waves-effect waves-light">Submit</button>
                                         </form>

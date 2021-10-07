@@ -87,11 +87,11 @@
                                                 <label for="exampleInputPassword1">Selling Price</label>
                                                 <input type="text" class="form-control" name="selling_price" value="{{ $prod->selling_price}}">
                                             </div>
-                                            <div class="form-group">
+                                           {{--  <div class="form-group">
                                                 <img src="#" id="image" >
                                                 <label for="exampleInputPassword1">Photo</label>
                                                 <input type="file" name="product_image"accept="image/*" class="upload"  onchange="readURL(this);" >
-                                            </div>
+                                            </div> --}}
                                            {{--  <input type="hidden" name="old_photo" value="{{ $prod->product_image}}">
                                             <div class="form-group">
                                                 <img src="#" id="image" >
@@ -99,6 +99,22 @@
                                                 <img src="{{URL::to( $prod->product_image)}}">
                                                 
                                             </div> --}}
+                                             <div class="form-group">
+                                                <img src="#" id="image" >
+                                                <label for="exampleInputPassword1">New Photo</label>
+                                                <input type="file" name="product_image"accept="image/*" class="upload" required onchange="readURL(this);" >
+                                            </div>
+
+                                            <div class="form-group">
+                                                <img src="{{URL::to($prod->product_image)}}" style="height:60px; width:60px;" >
+                                                <input type="hidden" name="old_photo" value="{{$prod->product_image}}">
+                                                
+                                            </div>
+
+
+
+
+
                                             
                                             <button type="submit" class="btn btn-purple waves-effect waves-light">Update</button>
                                         </form>

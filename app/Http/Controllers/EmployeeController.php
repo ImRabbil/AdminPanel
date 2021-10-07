@@ -164,7 +164,7 @@ class EmployeeController extends Controller
     //     }
 
     public function UpdateEmployee(Request $request, $id){
-         $data=array();
+        $data=array();
         $data['name'] = $request->name;
         $data['email'] = $request->email;
         $data['phone'] = $request->phone;
@@ -174,11 +174,63 @@ class EmployeeController extends Controller
         $data['salary'] = $request->salary;
         $data['vacation'] = $request->vacation;
         $data['city'] = $request->city;
-         // $image=$request->photo;
+         $image=$request->photo;
+            if($image){
+            $image_name = str::random(5);
+            $ext = strtolower($image->getClientOriginalExtension());
+            $image_full_name = $image_name.'.' .$ext;
+            $upload_path = 'public/employee/';
+            $image_url=$upload_path.$image_full_name;
+            $success=$image->move($upload_path,$image_full_name);
 
-        $upd=DB::table('employees')->where('id',$id)->update($data);
+            if($success){
+                $data['photo']=$image_url;
+                $img=DB::table('employees')->where('id',$id)->first();
+                $image_path = $img->photo;
+                $done = unlink($image_path);
+                $user = DB::table('employees')->where('id',$id)->update($data);
 
-         return redirect()->route('all.employee');
+                if($user){
+                    $notification = array(
+                        'messege'=>'Succesfully Employee Inserted',
+                         'alert-type'=>'success'
+                    );
+                    return Redirect()->route('all.employee')->with($notification);
+                }else{
+                   
+                         return Redirect()->back();
+
+                }
+             } 
+
+        }else{
+                $oldphoto = $request->old_photo;
+                if ($oldphoto) {
+                    $data['photo'] = $oldphoto;
+                    $user = DB::table('employees')->where('id',$id)->update($data);
+
+                if($user){
+                    $notification = array(
+                        'messege'=>'Succesfully Employee Inserted',
+                         'alert-type'=>'success'
+                    );
+                    return Redirect()->route('all.employee')->with($notification);
+                }else{
+                   
+                         return Redirect()->back();
+
+                }
+
+                }
+
+            }
+
+
+       
+
+        // $upd=DB::table('employees')->where('id',$id)->update($data);
+
+        //  return redirect()->route('all.employee');
 
     }
 

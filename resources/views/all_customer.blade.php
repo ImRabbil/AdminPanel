@@ -46,8 +46,16 @@
                                                             <td>{{ $row->phone}}</td>
                                                             <td>{{ $row->address}}</td>
                                                             <td>{{ $row->city}}</td>
-                                                            <td><img src="{{URL::to('$row->photo') }}" style="height: 60px; width: 60px;"></td>
+
+                                                            {{-- <td><img src="{{URL::to('$row->photo') }}" style="height: 60px; width: 60px;"></td>
+                                                            <td> --}}
+
                                                             <td>
+                                                             <img src="{{ URL::to($row->photo)}}" width="60px" height="60px">  
+
+                                                           </td>
+                                                           <td>
+
                                                                 <a href="{{URL::to('edit-customer/'.$row->id)}}" class="btn btn-sm btn-info">Edit</a>
                                                                 <a href="{{URL::to('delete-customer/'.$row->id)}}" id="delete" class="btn btn-sm btn-danger">Delete</a>
                                                                 <a href="{{URL::to('view-customer/'.$row->id)}}"class="btn btn-sm btn-success">View</a>

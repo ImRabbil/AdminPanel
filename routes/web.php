@@ -102,6 +102,10 @@ Route::get('/take-attendance', 'AttendanceController@TakeAttendance')->name('tak
 Route::post('/insert-attendance', 'AttendanceController@InsertAttendance');
 Route::get('/all-attendance', 'AttendanceController@AllAttendance')->name('all.attendance');
 Route::get('/edit-attendance/{edit_date}', 'AttendanceController@EditAttendance');
+Route::post('/update-attendance', 'AttendanceController@UpdateAttendance');
+Route::get('/view-attendance/{edit_date}', 'AttendanceController@ViewAttendance');
+
+
 
 
 
@@ -109,7 +113,34 @@ Route::get('/edit-attendance/{edit_date}', 'AttendanceController@EditAttendance'
 
 
 //setting route are here======================================
-Route::get('/website-setting', 'AttendanceController@WebsiteSetting')->name('setting');
+Route::get('/website-setting', 'SettingController@WebsiteSetting')->name('setting');
+Route::post('/view-website/{id}', 'SettingController@');
+
+
+
+
+
+
+//POS route are here===============================================
+
+Route::get('/pos', 'PosController@Index')->name('pos');
+Route::get('/pending-orders', 'PosController@PendingOrders')->name('pending.orders');
+Route::get('/view-order-status/{id}', 'PosController@ViewOrder');
+Route::get('/pos-done/{id}', 'PosController@PosDone');
+Route::get('/success-orders', 'PosController@SuccessOrders')->name('success.orders');
+
+
+
+//cart Controller-------------------------------------------
+Route::post('/add-cart', 'CartController@Index');
+Route::post('/cart-update/{rowId}', 'CartController@CartUpdate');
+Route::get('/cart-remove/{rowId}', 'CartController@CartRemove');
+Route::post('/create-invoice', 'CartController@CreateInvoice');
+Route::post('/final-invoice', 'CartController@FinalInvoice');
+
+
+
+
 
 
 

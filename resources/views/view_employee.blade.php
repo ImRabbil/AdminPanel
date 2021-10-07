@@ -25,6 +25,12 @@
                                     <div class="panel-heading"><h3 class="panel-title">View Details Employee</h3></div>
                                     <div class="panel-body">
                                         <form role="form">
+
+                                            <div class="form-group">
+                                                <img src="{{ URL::to($single->photo)}}" style="height:200px; width: 200px;"  >
+                                                <label for="exampleInputPassword1"></label>
+                                                
+                                            </div>
                                     
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Name</label>
@@ -62,11 +68,7 @@
                                                 <label for="exampleInputPassword1">City</label>
                                                 <p>{{ $single->city}}</p>
                                             </div>
-                                            <div class="form-group">
-                                                <img src="{{ URL::to($single->photo)}}"  >
-                                                <label for="exampleInputPassword1">Photo</label>
-                                                
-                                            </div>
+                                            
                                             
                                             
                                         </form>

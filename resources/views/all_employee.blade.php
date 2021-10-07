@@ -49,7 +49,7 @@
 
   
                                                            <td>
-                                                             <img src="{!! asset('public/employee/'.$row->photo) !!}" width="60px" height="60px">  
+                                                             <img src="{{ URL::to($row->photo)}}" width="60px" height="60px">  
 
                                                            </td>
 

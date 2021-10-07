@@ -179,7 +179,7 @@
                                 <a href="{{ route('home')}}" class="waves-effect active"><i class="md md-home"></i><span> Dashboard </span></a>
                             </li>
                             <li>
-                                <a href="{{ route('home')}}" class="waves-effect "><i class="fas fa-universal-access"></i><span class="text-primary"><b>POS</b>  </span></a>
+                                <a href="{{ route('pos')}}" class="waves-effect "><i class="fas fa-universal-access"></i><span class="text-primary"><b>POS</b>  </span></a>
                             </li>
 
                             <li class="has_sub">
@@ -246,6 +246,15 @@
                             </li>
 
                             <li class="has_sub">
+                                <a href="#" class="waves-effect"><i class="fas fa-cog"></i><span> Orders</span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="{{ route('pending.orders')}}">Pending Orders</a></li>
+                                    <li><a href="{{ route('success.orders')}}">Success Orders</a></li>
+                                   
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
                                 <a href="#" class="waves-effect"><i class="fas fa-balance-scale"></i><span> Sales Report</span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="">Add Expense</a></li>
@@ -266,7 +275,7 @@
                             <li class="has_sub">
                                 <a href="#" class="waves-effect"><i class="fas fa-cog"></i><span> Setting</span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="{{ route('setting')}}">Add Expense</a></li>
+                                    <li><a href="{{ route('setting')}}">Setting</a></li>
                                    
                                 </ul>
                             </li>

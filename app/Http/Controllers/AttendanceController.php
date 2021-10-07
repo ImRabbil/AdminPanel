@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Attendance;
 class AttendanceController extends Controller
 {
    /**
@@ -46,6 +47,7 @@ class AttendanceController extends Controller
                     "attendance"=>$request->attendance[$id],
                     "att_date"=>$request->att_date,
                     "att_year"=>$request->att_year,
+                    "month"=>$request->month,
                     "edit_date"=>date("d_m_y")
 
             ];
@@ -78,17 +80,63 @@ class AttendanceController extends Controller
 
      public function EditAttendance($edit_date)
      {
+        $date = DB::table('attendances')->where('edit_date',$edit_date)->first();
         $data = DB::table('attendances')->join('employees','attendances.user_id','employees.id')->select('employees.name','employees.photo','attendances.*')->where('edit_date',$edit_date)->get();
-        return view('edit_attendance',compact('data'));
+        return view('edit_attendance',compact('data','date'));
 
      }
 
-
-
-
-
-     public function WebsiteSetting()
+     public function UpdateAttendance(Request $request)
      {
-        echo "hello";
+        foreach ($request->id as $id) {
+
+            $data=[
+                    "attendance"=>$request->attendance[$id],
+                    "att_date"=>$request->att_date,
+                    "att_year"=>$request->att_year,
+                    "month"=>$request->month
+
+            ];
+            $attendance = Attendance ::where(['att_date' =>$request->att_date,'id' =>$id])->first();
+            $attendance->update($data);
+        }
+         if($attendance){
+                    $notification = array(
+                        'messege'=>'Succesfully Employee Inserted',
+                         'alert-type'=>'success'
+                    );
+                    return Redirect()->route('all.attendance')->with($notification);
+                }else{
+                   $notification = array(
+                        'messege'=>'Error', 
+                        'alert-type'=>'success'
+                    );
+                         return Redirect()->back()->with($notification);
+
+                }
+        
+
      }
-}
+
+
+     public function ViewAttendance($edit_date)
+     {
+         $date = DB::table('attendances')->where('edit_date',$edit_date)->first();
+        $data = DB::table('attendances')->join('employees','attendances.user_id','employees.id')->select('employees.name','employees.photo','attendances.*')->where('edit_date',$edit_date)->get();
+        return view('view_attendance',compact('data','date'));
+
+     }
+
+
+
+
+
+    
+    
+
+        
+     
+
+     
+  }
+

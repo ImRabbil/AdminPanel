@@ -36,7 +36,7 @@
                                                             <th>Address</th>
                                                             <th>City</th>
                                                             <th>Image</th>
-                                                            <th>Action</th>
+                                                            {{-- <th>Action</th> --}}
                                                         </tr>
                                                     </thead>
 
@@ -48,12 +48,19 @@
                                                             <td>{{ $row->phone}}</td>
                                                             <td>{{ $row->address}}</td>
                                                             <td>{{ $row->city}}</td>
-                                                            <td><img src="{{ asset('public/employee/'.$row->photo) }}" style="height: 60px; width: 60px;"></td>
+
                                                             <td>
+                                                             <img src="{{ URL::to($row->photo)}}" width="60px" height="60px">  
+
+                                                           </td>
+                                                    
+
+
+                                                            {{-- <td>
                                                                 <a href="{{URL::to('edit-suplier/'.$row->id)}}" class="btn btn-sm btn-info">Edit</a>
                                                                 <a href="{{URL::to('delete-suplier/'.$row->id)}}" id="delete" class="btn btn-sm btn-danger">Delete</a>
                                                                 <a href="{{URL::to('view-suplier/'.$row->id)}}"class="btn btn-sm btn-success">View</a>
-                                                            </td>
+                                                            </td> --}}
                                                         </tr>
                                                         @endforeach
 

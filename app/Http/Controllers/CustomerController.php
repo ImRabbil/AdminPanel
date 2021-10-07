@@ -27,6 +27,21 @@ class CustomerController extends Controller
 
     public function Store(Request $request){
 
+        $validatedData = $request->validate([
+        'name' => 'required|max:255',
+        'email' => 'required|max:255',
+        'shop_name' => 'required|max:255',
+        'address' => 'required',
+        'phone' => 'required',
+        'photo' => 'required',
+        'account_holder' => 'required',
+        'account_number' => 'required',
+        'bank_name' => 'required',
+
+
+    ]);
+
+
          $data=array();
         $data['name'] = $request->name;
         $data['email'] = $request->email;
@@ -43,39 +58,46 @@ class CustomerController extends Controller
         // print_r($data);
         // exit();
         $image = $request->file('photo');
-
         if($image){
             $image_name = str::random(5);
             $ext = strtolower($image->getClientOriginalExtension());
             $image_full_name = $image_name.'.' .$ext;
-            $upload_path = '/public/customer/';
+            $upload_path = 'public/customer/';
             $image_url=$upload_path.$image_full_name;
             $success=$image->move($upload_path,$image_full_name);
+
             if($success){
                 $data['photo']=$image_url;
                 $customer=DB::table('customers')->insert($data);
+
                 if($customer){
                     $notification = array(
                         'messege'=>'Succesfully Employee Inserted',
                          'alert-type'=>'success'
                     );
-                    return Redirect()->route('home')->with($notification);
+                    return Redirect()->back()->with($notification);
                 }else{
                    $notification = array(
                         'messege'=>'Error', 
                         'alert-type'=>'success'
                     );
-                   return Redirect()->back()->with($notification);
+                         return Redirect()->back()->with($notification);
 
                 }
+
             }else{
                 return Redirect()->back();
 
             }
 
+
         }else{
             return Redirect()->back();
         }
+
+       
+
+
 
     }
 
@@ -114,6 +136,8 @@ class CustomerController extends Controller
     {
          $edit = DB::table('customers')->where('id',$id)->first();
          return view('edit_customer',compact('edit'));
+
+
     }
 
     public function UpdateCustomer(Request $request,$id)
@@ -122,9 +146,63 @@ class CustomerController extends Controller
         $data['name']=$request->name;
         $data['email']=$request->email;
         $data['phone']=$request->phone;
-        $upd=DB::table('customers')->where('id',$id)->update($data);
+        $image=$request->photo;
+            if($image){
+            $image_name = str::random(5);
+            $ext = strtolower($image->getClientOriginalExtension());
+            $image_full_name = $image_name.'.' .$ext;
+            $upload_path = 'public/customer/';
+            $image_url=$upload_path.$image_full_name;
+            $success=$image->move($upload_path,$image_full_name);
 
-         return redirect()->route('all.customer');
+            if($success){
+                $data['photo']=$image_url;
+                $img=DB::table('customers')->where('id',$id)->first();
+                $image_path =$img->photo;
+                $done = unlink($image_path);
+                $user = DB::table('customers')->where('id',$id)->update($data);
+
+                if($user){
+                    $notification = array(
+                        'messege'=>'Succesfully Employee Inserted',
+                         'alert-type'=>'success'
+                    );
+                    return Redirect()->route('all.customer')->with($notification);
+                }else{
+                   
+                         return Redirect()->back();
+
+                }
+             } 
+
+        }else{
+                $oldphoto = $request->old_photo;
+                if ($oldphoto) {
+                    $data['photo'] = $oldphoto;
+                    $user = DB::table('customers')->where('id',$id)->update($data);
+
+                if($user){
+                    $notification = array(
+                        'messege'=>'Succesfully Employee Inserted',
+                         'alert-type'=>'success'
+                    );
+                    return Redirect()->route('all.customer')->with($notification);
+                }else{
+                   
+                         return Redirect()->back();
+
+                }
+
+                }
+
+            }
+
+
+
+
+        // $upd=DB::table('customers')->where('id',$id)->update($data);
+
+        //  return redirect()->route('all.customer');
 
     }
 }

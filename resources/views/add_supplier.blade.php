@@ -76,8 +76,13 @@
                                                     <option>Broker</option>
                                                 </select>
                                             </div>
-                                            <div class="form-group">
-                                                <img src="" id="image" >
+                                            {{-- <div class="form-group">
+                                                <img src="#" id="image" >
+                                                <label for="exampleInputPassword1">Photo</label>
+                                                <input type="file" name="photo"accept="image/*" class="upload" required onchange="readURL(this);" >
+                                            </div> --}}
+                                          <div class="form-group">
+                                                <img src="#" id="image" >
                                                 <label for="exampleInputPassword1">Photo</label>
                                                 <input type="file" name="photo"accept="image/*" class="upload" required onchange="readURL(this);" >
                                             </div>
@@ -95,13 +100,13 @@
                 </div> <!-- content -->
 
 
-                <script type="text/javascript">
+                 <script type="text/javascript">
                     function readURL(input){
                         if (input.files && input.files[0]){
                             var reader = new FileReader();
                             reader.onload= function(e){
                                 $('#image')
-                                .attr('src'e.target.result)
+                                .attr('src',e.target.result)
                                 .width(80)
                                 .height(80);
                             };

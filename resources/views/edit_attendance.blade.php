@@ -46,9 +46,9 @@
                                                             <td>{{ $row->name}}</td>
                                                             
                                                              <td>
-                                                             <img src="{!! asset('$row->photo') !!}" width="60px" height="50px">  
+                                                             <img src="{{ URL::to($row->photo)}}" width="60px" height="50px">  
                                                          </td>
-                                                         <input type="hidden" name="user_id[]" value="{{ $row->id}}">
+                                                         <input type="hidden" name="id[]" value="{{ $row->id}}">
                                                             <td>
                                                                 <input type="radio" name="attendance[{{ $row->id}}]" value="Present" required <?php if ($row->attendance == 'Present') {
                                                                     echo "checked";
@@ -60,6 +60,7 @@
                                                             </td>
                                                             <input type="hidden" name="att_date" value="{{ date("d/m/y")}}">
                                                             <input type="hidden" name="att_year" value="{{ date("Y")}}">
+                                                          <input type="hidden" name="month" value="{{ date("F")}}">
 
 
 

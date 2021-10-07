@@ -46,7 +46,7 @@
                                                             <td>{{ $row->name}}</td>
                                                             
                                                              <td>
-                                                             <img src="{!! asset('$row->photo') !!}" width="60px" height="50px">  
+                                                             <img src="{{ URL::to($row->photo)}}" width="60px" height="50px">  
                                                          </td>
                                                          <input type="hidden" name="user_id[]" value="{{ $row->id}}">
                                                             <td>

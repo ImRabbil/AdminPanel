@@ -31,6 +31,26 @@ class ProductController extends Controller
 
     public function InsertProduct(Request $request)
     {
+        $validatedData = $request->validate([
+
+        'product_name' => 'required|max:255',
+        'product_code' => 'required|max:255',
+        'cat_id' => 'required|max:255',
+        'sup_id' => 'required',
+        'product_garage' => 'required',
+        'buy_date' => 'required',
+        'product_route' => 'required',
+        'expire_date' => 'required',
+        'selling_price' => 'required',
+        'product_image' => 'required',
+
+
+    ]);
+
+
+
+
+
         $data = array();
         $data['product_name'] = $request->product_name;
         $data['product_code'] = $request->product_code;
@@ -46,13 +66,13 @@ class ProductController extends Controller
         // echo "<pre>";
         // print_r($data);
         // exit();
-                 $image = $request->file('product_image');
+        $image = $request->file('product_image');
 
         if($image){
             $image_name = str::random(5);
             $ext = strtolower($image->getClientOriginalExtension());
             $image_full_name = $image_name.'.' .$ext;
-            $upload_path = 'public/Products/';
+            $upload_path = 'public/product/';
             $image_url=$upload_path.$image_full_name;
             $success=$image->move($upload_path,$image_full_name);
 
@@ -65,18 +85,13 @@ class ProductController extends Controller
                         'messege'=>'Succesfully Employee Inserted',
                          'alert-type'=>'success'
                     );
-                    return Redirect()->back()->with($notification);
+                    return Redirect()->route('all.product')->with($notification);
                 }else{
                    $notification = array(
                         'messege'=>'Error', 
                         'alert-type'=>'success'
                     );
-
-   
-
-
-
-                   return Redirect()->back()->with($notification);
+                         return Redirect()->back()->with($notification);
 
                 }
 
@@ -92,7 +107,7 @@ class ProductController extends Controller
 
 
 
-    }
+ }
 
    public function DeleteProduct($id){
        //  $delete = DB::table('employees')->where('id',$id)->first();
@@ -144,79 +159,79 @@ class ProductController extends Controller
         $data['buying_price'] = $request->buying_price;
         $data['selling_price'] = $request->selling_price;
 
-         $product = DB::table('products')->where('id',$id)->update($data);
+         $image=$request->product_image;
+            if($image){
+            $image_name = str::random(5);
+            $ext = strtolower($image->getClientOriginalExtension());
+            $image_full_name = $image_name.'.' .$ext;
+            $upload_path = 'public/product/';
+            $image_url=$upload_path.$image_full_name;
+            $success=$image->move($upload_path,$image_full_name);
 
+            if($success){
+                $data['product_image']=$image_url;
+                $img=DB::table('products')->where('id',$id)->first();
+                $image_path = $img->product_image;
+                $done = unlink($image_path);
+                $user = DB::table('products')->where('id',$id)->update($data);
 
-                if($product){
+                if($user){
                     $notification = array(
-                        'messege'=>'Succesfully Advanced Paid',
+                        'messege'=>'Succesfully Employee Inserted',
                          'alert-type'=>'success'
                     );
                     return Redirect()->route('all.product')->with($notification);
                 }else{
-                   $notification = array(
-                        'messege'=>'Error', 
-                        'alert-type'=>'success'
+                   
+                         return Redirect()->back();
+
+                }
+             } 
+
+        }else{
+                $oldphoto = $request->old_photo;
+                if ($oldphoto) {
+                    $data['product_image'] = $oldphoto;
+                    $user = DB::table('products')->where('id',$id)->update($data);
+
+                if($user){
+                    $notification = array(
+                        'messege'=>'Succesfully Employee Inserted',
+                         'alert-type'=>'success'
                     );
-                   return Redirect()->back()->with($notification);
+                    return Redirect()->route('all.product')->with($notification);
+                }else{
+                   
+                         return Redirect()->back();
 
                 }
 
+                }
+
+            }
 
 
-        // echo "<pre>";
-        // print_r($data);
-        // exit();
-        //          $image = $request->file('product_image');
 
-        // if($image){
-        //     $image_name = str::random(5);
-        //     $ext = strtolower($image->getClientOriginalExtension());
-        //     $image_full_name = $image_name.'.' .$ext;
-        //     $upload_path = 'public/product/';
-        //     $image_url=$upload_path.$image_full_name;
-        //     $success=$image->move($upload_path,$image_full_name);
 
-        //     if($success){
-        //         $data['product_image']=$image_url;
-        //         $img=DB::table('products')->where('id',$id)->first();
-        //         $image_path = $img->product_image;
-        //         $done = unlink($image_path);
-        //         $product = DB::table('products')->where('id',$id)->update($data);
 
-        //         if($product){
-        //             $notification = array(
-        //                 'messege'=>'Succesfully Employee Inserted',
-        //                  'alert-type'=>'success'
-        //             );
-        //             return Redirect()->route('all.product')->with($notification);
-        //         }else{
 
-        //                      return Redirect()->back();
 
-        //         }
 
-        //     }
-        // }
-        // else{
-        //     $op = $request->old_photo;
-        //     if ($op) {
-        //         $data['product_image'] =$op;
-        //          $user = DB::table('products')->where('id',$id)->update($data);
-        //          if($user){
-        //             $notification = array(
-        //                 'messege'=>'Succesfully Employee Inserted',
-        //                  'alert-type'=>'success'
-        //             );
-        //             return Redirect()->route('all.product')->with($notification);
-        //         }else{
 
-        //                      return Redirect()->back();
 
-        //         }
 
-        //     }
-        // }
+
+
+
+
+
+
+
+
+
+
+
+        
 
          }
 
