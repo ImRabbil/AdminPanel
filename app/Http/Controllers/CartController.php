@@ -119,12 +119,14 @@ class CartController extends Controller
           $contents = Cart::content();
           // echo "<pre>";
           // print_r($contents);
+           $emp_id = $request->emp_id;
+           $employee = DB::table('employees')->where('id',$emp_id)->first();
 
 
     
 
 
-       return view('invoice',compact('customer','contents'));
+       return view('invoice',compact('customer','contents','employee'));
     }
 
 
@@ -161,6 +163,12 @@ class CartController extends Controller
             $odata['unicost']=$content->price;
             $odata['total']=$content->total;
              $insert = DB::table('orderdetails')->insert($odata);
+             if($insert){
+                $product = DB::table('products')->where('id',$content->id)->select('product_quantity as qty')->first();
+                $newqty =$product->qty- $content->qty;
+                $newProduct = DB::table('products')->where('id',$content->id)->update(['product_quantity'=> $newqty]);
+                // dd($product);
+             }
 
             
         }

@@ -45,7 +45,8 @@
                                                 
                                                 <div class="pull-left m-t-30">
                                                     <address>
-                                                      <strong>Name : {{ $customer->name }}</strong><br>
+                                                      <strong>Customers Name : {{ $customer->name }}</strong><br>
+                                                      <strong>Orders By : {{ $employee->name }}</strong><br>
                                                       <strong>Shop Name : {{ $customer->shop_name }}</strong><br>
 
                                                       Address : {{ $customer->address }} <br>

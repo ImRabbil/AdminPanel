@@ -39,28 +39,7 @@
                         <br>
                         <div class="row">
                             <div class="col-lg-6">
-                            {{-- <div class="panel">
-                                <h6 class="text-info"> Customer <a href="#" class="btn btn-primary waves-effect waves-light btn-sm pull-right" data-toggle="modal" data-target="#con-close-modal">Add New</a></h6>
-                                <select class="form-control">
-                                    
-                                    <option disabled="" selected="">Select Customer</option>
-                                    @foreach( $customer as $cus)
-                                    <option value="{{ $cus->id}}">{{ $cus->name}}</option>
-                                    @endforeach
-
-                                </select>
-
-
-
-                                    
-                                </div> --}}
-
-
-
-
-
-
-
+                           
                                 <div class="price_card text-center">
                                         
                                         <ul class="price-features" style="border: 1px solid black;">
@@ -93,7 +72,7 @@
                                                         <th>
                                                             <form action="{{url('/cart-update/'.$prod->rowId)}}" method="post">
                                                                 {{ csrf_field() }}
-                                                                <input type="text" name="qty" value="{{ $prod->qty }}" style="width: 40px;">
+                                                                <input type="number" name="qty" value="{{ $prod->qty }}" style="width: 40px;">
                                                                 <button type="submit" class="btn btn-purple " style="margin-top: -2px;">
                                                                     <i class="fas fa-check fa-lg"></i>
                                                                     
@@ -114,11 +93,11 @@
                                         <div class="pricing-footer bg-primary">
                                             <br>
                                             <p style="font-size: 15px;"> Quantity : {{ Cart::count() }} </p>
-                                            <p style="font-size: 15px;"> Sub Total : {{ Cart::subtotal() }} </p>
+                                            <p style="font-size: 15px;"> Total : {{ Cart::subtotal() }} </p>
 
-                                            <p style="font-size: 15px;"> Vat : {{ Cart::tax() }} </p>
-                                            <hr>
-                                            <p><h2 class="text-white">Total : </h2> <h1 class="text-white">{{ Cart::total() }}</h1>  </p>
+                                                        {{-- <p style="font-size: 15px;"> Vat : {{ Cart::tax() }} </p>
+                                                        <hr> --}}
+                                            {{-- <p><h2 class="text-white">Total : </h2> <h1 class="text-white">{{ Cart::total() }}</h1>  </p> --}}
 
                             
 
@@ -152,13 +131,33 @@
                                     @endforeach
 
                                 </select>
+
+
+                                <h6 class="text-info"> Select Customer </h6>
+                                @php
+                                        $employee=DB::table('employees')->get();
+                                 @endphp
+
+
+                                <select class="form-control" name="emp_id">
+                                    
+                                    <option disabled="" selected="">Select Employee</option>
+                                    @foreach( $employee as $emp)
+                                    <option value="{{ $emp->id}}">{{ $emp->name}}</option>
+                                    @endforeach
+
+                                </select>
+
+
+
+
                              </div>
                                   {{-- <input type="hidden" name="cus_id" value="{{ $cus->id}}"> --}}
 
                         </div>
                                         <button type="submit" class="bt btn-success"> Create Invoice</button>
                                     </div>
-                                    </form> 
+             </form> 
 
 
 

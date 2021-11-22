@@ -19,6 +19,8 @@ class CreateAttendancesTable extends Migration
             $table->string('att_date');
             $table->string('att_year');
             $table->string('attendance');
+             $table->string('edit_date');
+              $table->string('month');
             $table->timestamps();
         });
     }

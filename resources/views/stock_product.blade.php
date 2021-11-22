@@ -21,8 +21,8 @@
                              <div class="col-md-12">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title">All Products</h3>
-                                        <a href="{{ route('add.product')}}" class="btn btn-sm btn-info pull-right">Add New</a>
+                                        <h3 class="panel-title">All Stock Products</h3>
+                                        
                                     </div>
                                     <div class="panel-body">
                                         <div class="row">
@@ -34,7 +34,7 @@
                                                             <th>Code</th>
                                                             <th>Product Quantity</th>
                                                             <th>Selling Price</th>
-                                                            <th>Stock House</th>
+                                                            <th>Status</th>
                                                             <th>Route</th>
                                                             <th>Image</th>
                                                             
@@ -51,8 +51,20 @@
                                                             <td>{{ $row->product_quantity}}</td>
 
                                                             <td>{{ $row->selling_price}}</td>
-                                                            <td>{{ $row->product_garage}}</td>
+
+
+                                                            <td>
+                                                            @if($row->product_quantity >= 1 )
+                                                            <span class="badge badge-success">Available</span>
+                                                            @else
+                                                             <span class="badge badge-danger">Stock Out</span>
+                                                            @endif
+                                                            </td>
+
+
                                                             <td>{{ $row->product_route}}</td>
+
+
 
 
 
@@ -62,9 +74,9 @@
 
                                                             </td>
                                                             <td>
-                                                                <a href="{{URL::to('edit-product/'.$row->id)}}" class="btn btn-sm btn-info">Edit</a>
-                                                                <a href="{{URL::to('delete-product/'.$row->id)}}" id="delete" class="btn btn-sm btn-danger">Delete</a>
-                                                                <a href="{{URL::to('view-product/'.$row->id)}}"class="btn btn-sm btn-success">View</a>
+                                                                <a href="{{URL::to('edit-stock/'.$row->id)}}" class="btn btn-sm btn-info">Edit</a>
+                                                                {{-- <a href="{{URL::to('delete-product/'.$row->id)}}" id="delete" class="btn btn-sm btn-danger">Delete</a>
+                                                                <a href="{{URL::to('view-product/'.$row->id)}}"class="btn btn-sm btn-success">View</a> --}}
                                                             </td>
                                                         </tr>
                                                         @endforeach

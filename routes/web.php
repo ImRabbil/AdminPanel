@@ -126,8 +126,13 @@ Route::post('/view-website/{id}', 'SettingController@');
 Route::get('/pos', 'PosController@Index')->name('pos');
 Route::get('/pending-orders', 'PosController@PendingOrders')->name('pending.orders');
 Route::get('/view-order-status/{id}', 'PosController@ViewOrder');
-Route::get('/pos-done/{id}', 'PosController@PosDone');
+Route::get('/pos-done/{id}', 'PosController@PosDONE');
 Route::get('/success-orders', 'PosController@SuccessOrders')->name('success.orders');
+Route::get('/stock-product', 'PosController@Stock')->name('stock');
+Route::get('/edit-stock/{id}', 'PosController@EditStock');
+Route::post('/update-stock/{id}', 'PosController@UpdateStock');
+
+
 
 
 
@@ -137,6 +142,13 @@ Route::post('/cart-update/{rowId}', 'CartController@CartUpdate');
 Route::get('/cart-remove/{rowId}', 'CartController@CartRemove');
 Route::post('/create-invoice', 'CartController@CreateInvoice');
 Route::post('/final-invoice', 'CartController@FinalInvoice');
+
+
+//sales report route here---------------------------------
+Route::get('/today-sales', 'SalesController@TodaySales')->name('today.sales');
+Route::get('/monthly-sales', 'SalesController@TodayMonthly')->name('monthly.sales');
+
+
 
 
 

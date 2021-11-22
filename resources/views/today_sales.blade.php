@@ -21,51 +21,47 @@
                              <div class="col-md-12">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title">All Products</h3>
-                                        <a href="{{ route('add.product')}}" class="btn btn-sm btn-info pull-right">Add New</a>
+                                        <h3 class="panel-title">Today Sales </h3>
+                                        
                                     </div>
+                                    
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-md-12 col-sm-12 col-xs-12">
                                                 <table id="datatable" class="table table-striped table-bordered">
                                                     <thead>
                                                         <tr>
-                                                            <th>Name</th>
-                                                            <th>Code</th>
-                                                            <th>Product Quantity</th>
-                                                            <th>Selling Price</th>
-                                                            <th>Stock House</th>
-                                                            <th>Route</th>
-                                                            <th>Image</th>
-                                                            
-                                                            <th>Action</th>
+                                                            <th>Customer Name</th>
+                                                            <th>Product Name</th>
+                                                            <th> Quantity</th>
+                                                            <th>Total Amount</th>
+                                                           
                                                         </tr>
                                                     </thead>
 
                                              
                                                     <tbody>
-                                                        @foreach($product as $row)
+                                                        @foreach($sales as $row)
                                                         <tr>
-                                                            <td>{{ $row->product_name}}</td>
-                                                            <td>{{ $row->product_code}}</td>
-                                                            <td>{{ $row->product_quantity}}</td>
-
-                                                            <td>{{ $row->selling_price}}</td>
-                                                            <td>{{ $row->product_garage}}</td>
-                                                            <td>{{ $row->product_route}}</td>
-
-
-
                                                             <td>
+                                                               
+                                                                {{$row->name}}
+
+                                                            </td>
+                                                            <td>{{ $row->product_name}}</td>
+                                                            {{-- <td>{{ $row->order_date}}</td> --}}
+                                                            <td>{{ $row->total_products}}</td>
+                                                            <td>{{ $row->total}}</td>
+                                                           {{--  <td>{{ $row->payment_status}}</td>
+                                                            <td><span class="badge badge-danger">{{ $row->order_status}}</span></td> --}}
+
+
+                                                            {{-- <td>
                                                                 
                                                              <img src="{{ URL::to($row->product_image)}}" width="60px" height="60px">  
 
-                                                            </td>
-                                                            <td>
-                                                                <a href="{{URL::to('edit-product/'.$row->id)}}" class="btn btn-sm btn-info">Edit</a>
-                                                                <a href="{{URL::to('delete-product/'.$row->id)}}" id="delete" class="btn btn-sm btn-danger">Delete</a>
-                                                                <a href="{{URL::to('view-product/'.$row->id)}}"class="btn btn-sm btn-success">View</a>
-                                                            </td>
+                                                            </td> --}}
+                                                            
                                                         </tr>
                                                         @endforeach
 

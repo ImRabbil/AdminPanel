@@ -71,6 +71,12 @@
                                                 <label for="exampleInputPassword1">Product Route</label>
                                                 <input type="text" class="form-control" name="product_route" placeholder="Product Route">
                                             </div>
+
+
+                                             <div class="form-group">
+                                                <label for="exampleInputPassword1">Product Quantity</label>
+                                                <input type="text" class="form-control" name="product_quantity" placeholder="Product Quantity">
+                                            </div>
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">Buy Date</label>
                                                 <input type="date" class="form-control" name="buy_date" placeholder="Buy Date">

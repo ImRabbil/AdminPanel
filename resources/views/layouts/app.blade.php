@@ -143,7 +143,7 @@
                                     <a href="#" class="right-bar-toggle waves-effect waves-light"><i class="md md-chat"></i></a>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="{{URL::to('public/admin/images/avatar-1.jpg')}}" alt="user-img" class="img-circle"> </a>
+                                    <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="{{URL::to('public/admin/images/r.jpg')}}" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
                                         <li><a href="javascript:void(0)"><i class="md md-face-unlock"></i> Profile</a></li>
                                         <li><a href="javascript:void(0)"><i class="md md-settings"></i> Settings</a></li>
@@ -257,10 +257,8 @@
                             <li class="has_sub">
                                 <a href="#" class="waves-effect"><i class="fas fa-balance-scale"></i><span> Sales Report</span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="">Add Expense</a></li>
-                                    <li><a href="">Today Expense</a></li>
-                                     <li><a href="">Monthly Expense</a></li>
-                                     <li><a href="">Yearly Expense</a></li>
+                                    <li><a href="{{ route('today.sales')}}">Today Sales</a></li>
+                                     <li><a href="{{ route('monthly.sales')}}">Monthly Sales</a></li>  
                                 </ul>
                             </li>
 
@@ -279,6 +277,14 @@
                                    
                                 </ul>
                             </li>
+
+                            <li>
+                                <a href="{{ route('stock')}}" class="waves-effect active"><i class="md md-home"></i><span> Stock </span></a>
+                            </li>
+
+
+
+                            
 
 
                            

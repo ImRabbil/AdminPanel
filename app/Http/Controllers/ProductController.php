@@ -43,6 +43,7 @@ class ProductController extends Controller
         'expire_date' => 'required',
         'selling_price' => 'required',
         'product_image' => 'required',
+        'product_quantity' => 'required',
 
 
     ]);
@@ -62,6 +63,7 @@ class ProductController extends Controller
         $data['expire_date'] = $request->expire_date;
         $data['buying_price'] = $request->buying_price;
         $data['selling_price'] = $request->selling_price;
+        $data['product_quantity'] = $request->product_quantity;
 
         // echo "<pre>";
         // print_r($data);
@@ -150,6 +152,7 @@ class ProductController extends Controller
             $data = array();
         $data['product_name'] = $request->product_name;
         $data['product_code'] = $request->product_code;
+        $data['product_quantity'] = $request->product_quantity;
         $data['cat_id'] = $request->cat_id;
         $data['sup_id'] = $request->sup_id;
         $data['product_garage'] = $request->product_garage;

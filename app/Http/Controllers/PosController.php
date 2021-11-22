@@ -42,6 +42,7 @@ class PosController extends Controller
     {
         $order = DB::table('orders')
                 ->join('customers','orders.customer_id','customers.id')
+                 ->select('customers.*','orders.*')
                 ->where('orders.id',$id)
                 ->first();
         $order_details = DB::table('orderdetails')
@@ -58,34 +59,85 @@ class PosController extends Controller
 
                 //  print_r($order_details);
     }
-    public function PosDone($id)
+    public function PosDONE(Request $request, $id)
 
     {
-        $approve=DB::table('orders')->where('id',$id)->update(['order_status'=>'s']);
-         // if($approve){
-                    
-         //            return Redirect()->route('pending.orders');
-         //        }else{
-                   
-         //                 return Redirect()->back();
 
-         //             }
-          echo "$approve";
+
+
+                // $order = DB::table('orders')
+                // ->join('customers','orders.customer_id','customers.id')
+                // ->where('orders.id',$id)
+                // ->get();
+        $user = DB::table('orders')->where('id',$id)->update(['order_status'=>'success']);
+         if($user){
+                    
+                    return Redirect()->route('pending.orders');
+                }else{
+                   
+                         return Redirect()->back();
+
+                     }
+
+        // echo "<pre>";
+        // print_r($order);
+          
         
 
 
 
 
     }
-    // public function SuccessOrders()
-    // {
-    //      $success = DB::table('orders')
-    //     ->join('customers','orders.customer_id','customers.id')
-    //     ->select('customers.name','orders.*')
-    //     ->where('order_status','success')->get();
-    //     // return view('success_order',compact('success'));
-    //     echo "<pre>";
-    //      print_r($success);
+    public function SuccessOrders()
+    {
+         $success = DB::table('orders')
+        ->join('customers','orders.customer_id','customers.id')
+        ->select('customers.name','orders.*')
+        ->where('order_status','success')->get();
+        return view('success_order',compact('success'));
+        // echo "<pre>";
+        //  print_r($success);
 
-    // }
+    }
+
+
+
+
+    public function Stock()
+    {
+        $product = DB::table('products')->get();
+        return view('stock_product',compact('product'));
+     } 
+
+     public function EditStock($id){
+        $prod = DB::table('products')->where('id',$id)->first();
+        return view('edit_stock',compact('prod'));
+
+     }  
+     public function UpdateStock(Request $request, $id)
+     
+         {
+        $data = array();
+        $data['product_quantity'] = $request->product_quantity;
+        $Stock = DB::table('products')->where('id',$id)->update($data);
+        if($Stock){
+                    $notification = array(
+                        'messege'=>'Succesfully Advanced Paid',
+                         'alert-type'=>'success'
+                    );
+                    return Redirect()->route('stock')->with($notification);
+                }else{
+                   $notification = array(
+                        'messege'=>'Error', 
+                        'alert-type'=>'success'
+                    );
+                   return Redirect()->back()->with($notification);
+
+                }
+            // echo "hello";
+
+
+     }
+
+     
 }

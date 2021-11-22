@@ -34,6 +34,10 @@
                                                 <label for="exampleInputPassword1">Product Code</label>
                                                 <input type="text" class="form-control" name="product_code" value="{{ $prod->product_code}}">
                                             </div>
+                                             <div class="form-group">
+                                                <label for="exampleInputPassword1">Product Quantity</label>
+                                                <input type="text" class="form-control" name="product_quantity" value="{{$prod->product_quantity}}">
+                                            </div>
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">Category</label>
                                                 @php
