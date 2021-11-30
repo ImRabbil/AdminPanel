@@ -133,7 +133,21 @@
                                 </select>
 
 
-                                <h6 class="text-info"> Select Customer </h6>
+                                 @if ($errors->any())
+                                                <div class="alert alert-danger">
+                                                    <ul>
+                                                        @foreach ($errors->all() as $error)
+                                                            <li>{{ $error }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            @endif
+
+
+
+
+
+                                <h6 class="text-info"> Select Employee </h6>
                                 @php
                                         $employee=DB::table('employees')->get();
                                  @endphp

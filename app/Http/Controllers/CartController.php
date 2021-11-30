@@ -119,6 +119,7 @@ class CartController extends Controller
           $contents = Cart::content();
           // echo "<pre>";
           // print_r($contents);
+          $validatedData = $request->validate([  'emp_id' => 'required',], ['emp_id.required' => 'Selelct Employee First !!!']);
            $emp_id = $request->emp_id;
            $employee = DB::table('employees')->where('id',$emp_id)->first();
 

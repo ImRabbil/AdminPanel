@@ -37,12 +37,15 @@
                                             </div>
                                         </div>
                                         <hr>
+                                        
                                         <div class="row">
                                             <div class="col-md-12">
                                                 
                                                 <div class="pull-left m-t-30">
                                                     <address>
                                                       <strong>Name : {{ $order->name }}</strong><br>
+
+                                                      {{--  <strong>Orders By : {{ $orders->name }}</strong><br> --}}
                                                       <strong>Shop Name : {{ $order->shop_name }}</strong><br>
 
                                                       Address : {{ $order->address }} <br>

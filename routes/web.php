@@ -149,6 +149,10 @@ Route::get('/today-sales', 'SalesController@TodaySales')->name('today.sales');
 Route::get('/monthly-sales', 'SalesController@TodayMonthly')->name('monthly.sales');
 
 
+//barcode route is here------------------
+Route::get('/barcode', 'ProductController@Barcode')->name('barcode');
+
+
 
 
 

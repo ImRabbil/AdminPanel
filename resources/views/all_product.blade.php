@@ -34,8 +34,8 @@
                                                             <th>Code</th>
                                                             <th>Product Quantity</th>
                                                             <th>Selling Price</th>
-                                                            <th>Stock House</th>
-                                                            <th>Route</th>
+                                                            <th>BarCode</th>
+                                                           {{--  <th>Barcode Number</th> --}}
                                                             <th>Image</th>
                                                             
                                                             <th>Action</th>
@@ -51,8 +51,9 @@
                                                             <td>{{ $row->product_quantity}}</td>
 
                                                             <td>{{ $row->selling_price}}</td>
-                                                            <td>{{ $row->product_garage}}</td>
-                                                            <td>{{ $row->product_route}}</td>
+
+                                                            <td>{!! $row->product_garage !!}</td>
+                                                           {{--  <td>{{ $row->product_route}}</td> --}}
 
 
 

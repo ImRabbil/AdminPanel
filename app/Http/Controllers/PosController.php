@@ -50,6 +50,12 @@ class PosController extends Controller
         ->select('orderdetails.*','products.product_name','products.product_code')
                         ->where('order_id',$id)
                         ->get();
+         
+          // $order = DB::table('orders')
+          //       ->join('employees','orders.employee_id','employees.id')
+          //        ->select('employees.*','orders.*')
+          //       ->where('orders.id',$id)
+          //       ->first();
 
         return view('order_confirmation',compact('order','order_details'));
 
@@ -94,6 +100,8 @@ class PosController extends Controller
         ->join('customers','orders.customer_id','customers.id')
         ->select('customers.name','orders.*')
         ->where('order_status','success')->get();
+        
+
         return view('success_order',compact('success'));
         // echo "<pre>";
         //  print_r($success);

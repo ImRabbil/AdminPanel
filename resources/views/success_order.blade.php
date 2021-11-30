@@ -30,11 +30,11 @@
                                                 <table id="datatable" class="table table-striped table-bordered">
                                                     <thead>
                                                         <tr>
-                                                            <th>Name</th>
+                                                            <th>Customer Name</th>
                                                             <th>Date</th>
                                                             <th> Quantity</th>
                                                             <th>Total Amount</th>
-                                                            <th>Payment</th>
+                                                           {{--  <th>Payment</th> --}}
                                                             <th>Order Status</th>
                                                             <th>Action</th>
                                                         </tr>
@@ -48,7 +48,7 @@
                                                             <td>{{ $row->order_date}}</td>
                                                             <td>{{ $row->total_products}}</td>
                                                             <td>{{ $row->total}}</td>
-                                                            <td>{{ $row->payment_status}}</td>
+                                                           {{--  <td>{{ $row->product_name}}</td> --}}
                                                             <td><span class="badge badge-success">{{ $row->order_status}}</span></td>
 
 

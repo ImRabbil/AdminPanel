@@ -5,6 +5,7 @@ use Illuminate\Support\Str;
 
 use Illuminate\Http\Request;
 use DB;
+use Picqer;
 
 class ProductController extends Controller
 {
@@ -37,7 +38,7 @@ class ProductController extends Controller
         'product_code' => 'required|max:255',
         'cat_id' => 'required|max:255',
         'sup_id' => 'required',
-        'product_garage' => 'required',
+        
         'buy_date' => 'required',
         'product_route' => 'required',
         'expire_date' => 'required',
@@ -48,6 +49,13 @@ class ProductController extends Controller
 
     ]);
 
+        $product_route = $request->product_route;
+
+
+
+        $generator = new Picqer\Barcode\BarcodeGeneratorHTML();
+    $product_garage = $generator->getBarcode($product_route, $generator::TYPE_CODE_128);
+
 
 
 
@@ -57,7 +65,8 @@ class ProductController extends Controller
         $data['product_code'] = $request->product_code;
         $data['cat_id'] = $request->cat_id;
         $data['sup_id'] = $request->sup_id;
-        $data['product_garage'] = $request->product_garage;
+        // $data->barcode=$barcode;
+        $data['product_garage'] =  $product_garage;
         $data['product_route'] = $request->product_route;
         $data['buy_date'] = $request->buy_date;
         $data['expire_date'] = $request->expire_date;
@@ -212,29 +221,13 @@ class ProductController extends Controller
                 }
 
             }
+         }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
+         public function Barcode(){
+            $product = DB::table('products')->get();
+        return view('barcode',compact('product'));
 
          }
 

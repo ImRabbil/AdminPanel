@@ -234,6 +234,11 @@
                                 </ul>
                             </li>
 
+                            <li>
+
+                            <a href="{{ route('barcode')}}" class="waves-effect "><i class="fas fa-universal-access"></i><span class="text-primary"><b>BarCode</b>  </span></a>
+                            </li>
+
 
                             <li class="has_sub">
                                 <a href="#" class="waves-effect"><i class="fas fa-dollar-sign"></i><span> Expenses</span><span class="pull-right"><i class="md md-add"></i></span></a>

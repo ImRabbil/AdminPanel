@@ -63,13 +63,13 @@
                                                 </select>
                                             </div>
                                             
+                                            {{-- <div class="form-group">
+                                                <label for="exampleInputPassword1">Bar Code</label>
+                                                <input type="text" class="form-control" name="product_garage" placeholder="">
+                                            </div> --}}
                                             <div class="form-group">
-                                                <label for="exampleInputPassword1">Stock House</label>
-                                                <input type="text" class="form-control" name="product_garage" placeholder="Stock House">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputPassword1">Product Route</label>
-                                                <input type="text" class="form-control" name="product_route" placeholder="Product Route">
+                                                <label for="exampleInputPassword1">BarCode Number</label>
+                                                <input type="text" class="form-control" name="product_route" placeholder="">
                                             </div>
 
 
