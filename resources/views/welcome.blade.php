@@ -82,7 +82,7 @@
 
             <div class="content">
                 <div class="">
-                    <h1>Inventory Management System</h1>
+                    <h1>SuperShop Management System</h1>
                     
                 </div>
 

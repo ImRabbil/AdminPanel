@@ -18,9 +18,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['register'=>'false']);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/roles', 'EmployeeController@role_index')->name('admin.role_index');
+Route::get('/role/create', 'EmployeeController@role_create')->name('admin.role_create');
+Route::post('/role', 'EmployeeController@role_store')->name('admin.role_store');
+Route::get('/role/{id}/user', 'EmployeeController@role_user')->name('admin.role_user');
+
+
+Route::get('/users', 'EmployeeController@user_index')->name('admin.user_index');
+Route::get('/user/create', 'EmployeeController@user_create')->name('admin.user_create');
+Route::post('/user', 'EmployeeController@user_store')->name('admin.user_store');
+
+
+
+
 //employee route
 Route::get('/add-employee', 'EmployeeController@index')->name('add.employee');
 
@@ -133,6 +147,34 @@ Route::get('/edit-stock/{id}', 'PosController@EditStock');
 Route::post('/update-stock/{id}', 'PosController@UpdateStock');
 
 
+//User Pos are route here------------------------------------
+
+Route::group(['prefix'=>'user','middleware'=>['user','auth'],'namespace'=>'user'],function(){ 
+    Route::get('pos','UserController@index')->name('user.pos');
+});
+Route::group(['prefix'=>'user','middleware'=>['user','auth'],'namespace'=>'user'],function(){ 
+    Route::post('create-invoice','UserController@CreateInvoice')->name('user.invoice');
+});
+
+Route::group(['prefix'=>'user','middleware'=>['user','auth'],'namespace'=>'user'],function(){ 
+    Route::post('final-invoice','UserController@FinalInvoice')->name('user.final.invoice');
+});
+
+Route::group(['prefix'=>'user','middleware'=>['user','auth'],'namespace'=>'user'],function(){ 
+    Route::get('pending-orders','UserController@PendingOrders')->name('user.pending.orders');
+});
+Route::group(['prefix'=>'user','middleware'=>['user','auth'],'namespace'=>'user'],function(){ 
+    Route::get('view-order-status','UserController@ViewOrder')->name('view-order-status/{id}');
+});
+Route::group(['prefix'=>'user','middleware'=>['user','auth'],'namespace'=>'user'],function(){ 
+    Route::get('pos-done','UserController@PosDONE')->name('user.pos-done/{id}');
+});
+
+Route::group(['prefix'=>'user','middleware'=>['user','auth'],'namespace'=>'user'],function(){ 
+    Route::get('success-orders','UserController@SuccessOrders')->name('user.success.orders');
+});
+
+
 
 
 
@@ -151,6 +193,20 @@ Route::get('/monthly-sales', 'SalesController@TodayMonthly')->name('monthly.sale
 
 //barcode route is here------------------
 Route::get('/barcode', 'ProductController@Barcode')->name('barcode');
+
+
+
+
+
+
+
+Route::group(['prefix'=>'admin','middleware'=>['admin','auth'],'namespace'=>'admin'],function(){ 
+    Route::get('dashboard','AdminController@index')->name('admin.dashboard');
+});
+
+Route::group(['prefix'=>'user','middleware'=>['user','auth'],'namespace'=>'user'],function(){ 
+    Route::get('dashboard','UserController@index')->name('user.dashboard');
+});
 
 
 

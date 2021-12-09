@@ -44,8 +44,8 @@
                                             </div>
                                             
                                             <div class="form-group">
-                                                <label for="exampleInputPassword1">Stock House</label>
-                                                <p>{{ $view->product_garage}}</p>
+                                                <label for="exampleInputPassword1">Barcode</label>
+                                                <p>{!! $view->product_garage !!}</p>
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">Product Route</label>

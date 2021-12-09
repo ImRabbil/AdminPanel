@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Http\Request;
 use DB;
 use App\Employee;
+use App\Role;
+use App\User;
 
 class EmployeeController extends Controller
 {
@@ -16,9 +19,58 @@ class EmployeeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('admin');
+    }
+    public function role_index(){
+        $roles = Role::all();
+        return view('admin.role_index', compact('roles'));
+    }
+    public function role_create(){
+        return view('admin.role_create');
+    }
+    public function role_store(Request $request){
+        $this->validate($request, [
+            'name' => 'required'
+        ]);
+        $role = new Role;
+        $role->name = $request->input('name');
+        $role->save();
+        return redirect()->route('admin.role_index');
+
+    }
+    public function role_user($id){
+        $users = User::where('role_id', $id)->get();
+        return $users;
     }
 
+public function user_index(){
+    $users = User::all();
+    return view('admin.user_index', compact('users'));
+}
+public function user_create(){
+    $roles = Role::all();
+    return view('admin.user_create', compact('roles'));
+}
+public function user_store(Request $request){
+    $this->validate($request, [
+        'name' => 'required',
+        'email' => 'required|unique:users.email',
+        'password' => 'required|confirmed'
+    ]);
+    if($request->input('role_id')!= ''){
+        $user = new User;
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = Hash::make($request->input('password'));
+        $user->save();
+        return redirect()->route('admin.user_index');
+    }else{
+        return 'Error';
+    }
+    
+
+
+}
     /**
      * Show the application dashboard.
      *
@@ -26,7 +78,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        return view('add_employee');
+        $roles = Role::all();
+        return view('add_employee', compact('roles'));
 
     }
 
@@ -68,7 +121,7 @@ class EmployeeController extends Controller
 
             if($success){
                 $data['photo']=$image_url;
-                $employee=DB::table('employees')->insert($data);
+                $employee = DB::table('employees')->insert($data);
 
                 if($employee){
                     $notification = array(
@@ -90,14 +143,9 @@ class EmployeeController extends Controller
 
             }
 
-
         }else{
             return Redirect()->back();
         }
-
-
-
-
         
     }
 

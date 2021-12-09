@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.userapp')
 
 @section('content')
 <div class="content-page">
@@ -21,46 +21,46 @@
                              <div class="col-md-12">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title">Today Sales     {{date("d/m/y")}} </h3>
+                                        <h3 class="panel-title">All Pending Order</h3>
                                         
                                     </div>
-                                    
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-md-12 col-sm-12 col-xs-12">
                                                 <table id="datatable" class="table table-striped table-bordered">
                                                     <thead>
                                                         <tr>
-                                                            <th>Customer Name</th>
-                                                            <th>Product Name</th>
+                                                            <th>Name</th>
+                                                            <th>Date</th>
                                                             <th> Quantity</th>
                                                             <th>Total Amount</th>
-                                                           
+                                                            <th>Payment</th>
+                                                            <th>Order Status</th>
+                                                            <th>Action</th>
                                                         </tr>
                                                     </thead>
 
                                              
                                                     <tbody>
-                                                        @foreach($sales as $row)
+                                                        @foreach($pending as $row)
                                                         <tr>
-                                                            <td>
-                                                               
-                                                                {{$row->name}}
-
-                                                            </td>
-                                                            <td>{{ $row->product_name}}</td>
-                                                            {{-- <td>{{ $row->order_date}}</td> --}}
+                                                            <td>{{ $row->name}}</td>
+                                                            <td>{{ $row->order_date}}</td>
                                                             <td>{{ $row->total_products}}</td>
                                                             <td>{{ $row->total}}</td>
-                                                           {{--  <td>{{ $row->payment_status}}</td>
-                                                            <td><span class="badge badge-danger">{{ $row->order_status}}</span></td> --}}
+                                                            <td>{{ $row->payment_status}}</td>
+                                                            <td><span class="badge badge-danger">{{ $row->order_status}}</span></td>
 
 
                                                             {{-- <td>
                                                                 
                                                              <img src="{{ URL::to($row->product_image)}}" width="60px" height="60px">  
+
                                                             </td> --}}
-                                                            
+                                                            <td>
+                                                                
+                                                                <a href="{{URL::to('view-order-status/'.$row->id)}}"class="btn btn-sm btn-success">View</a>
+                                                            </td>
                                                         </tr>
                                                         @endforeach
 

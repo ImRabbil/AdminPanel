@@ -32,9 +32,9 @@
                                                         <tr>
                                                             <th>Name</th>
                                                             <th>Code</th>
-                                                            <th>Product Quantity</th>
+                                                            {{-- <th>Product Quantity</th> --}}
                                                             <th>Selling Price</th>
-                                                            <th>BarCode</th>
+                                                           {{--  <th>BarCode</th> --}}
                                                            {{--  <th>Barcode Number</th> --}}
                                                             <th>Image</th>
                                                             
@@ -48,11 +48,11 @@
                                                         <tr>
                                                             <td>{{ $row->product_name}}</td>
                                                             <td>{{ $row->product_code}}</td>
-                                                            <td>{{ $row->product_quantity}}</td>
+                                                            {{-- <td>{{ $row->product_quantity}}</td> --}}
 
                                                             <td>{{ $row->selling_price}}</td>
 
-                                                            <td>{!! $row->product_garage !!}</td>
+                                                            {{-- <td>{!! $row->product_garage !!}</td> --}}
                                                            {{--  <td>{{ $row->product_route}}</td> --}}
 
 

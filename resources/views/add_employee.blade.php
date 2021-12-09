@@ -35,6 +35,19 @@
                                                 <input type="email" class="form-control" name="email" placeholder="Email">
                                             </div>
                                             <div class="form-group">
+                                                <label for="">Role</label>
+                                                <select name="role_id" class="form-controller">
+                                                    <option value="null">Choose User Role</option>
+                                                    @forelse($roles as $role)
+                                                    <option value="{{$role->id}}">{{$role->name}}</option>
+
+                                                    @empty 
+                                                    <option>No Role</option>
+
+                                                    @endforelse
+                                                </select>                                            
+                                            </div>
+                                            <div class="form-group">
                                                 <label for="exampleInputPassword1">Phone</label>
                                                 <input type="text" class="form-control" name="phone" placeholder="Phone">
                                             </div>

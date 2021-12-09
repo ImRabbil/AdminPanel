@@ -58,7 +58,7 @@
                 <!-- LOGO -->
                 <div class="topbar-left">
                     <div class="text-center">
-                        <a href="#" class="logo"><i class="md md-terrain"></i> <span>SuperShop </span></a>
+                        <a href="index.html" class="logo"><i class="md md-terrain"></i> <span>SuperShop </span></a>
                     </div>
                 </div>
                 <!-- Button mobile view to collapse sidebar menu -->
@@ -172,33 +172,26 @@
             <div class="left side-menu">
                 <div class="sidebar-inner slimscrollleft">
                    
-                    <!--- Divider -->
+                   
                     <div id="sidebar-menu">
                         <ul>
                             <li>
-                                <a href="{{ route('home')}}" class="waves-effect active"><i class="md md-home"></i><span> Dashboard </span></a>
+                                <a href="#" class="waves-effect active"><i class="md md-home"></i><span> Dashboard </span></a>
                             </li>
                             <li>
-                                <a href="{{ route('pos')}}" class="waves-effect "><i class="fas fa-universal-access"></i><span class="text-primary"><b>POS</b>  </span></a>
+                                <a href="{{ route('user.pos')}}" class="waves-effect "><i class="fas fa-universal-access"></i><span class="text-primary"><b>POS</b>  </span></a>
                             </li>
 
                             <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="fas fa-user"></i><span> Roles </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <a href="#" class="waves-effect"><i class="fas fa-cog"></i><span> Orders</span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/Inventory/role/create">Add Role</a></li>
-                                    <li><a href="/Inventory/roles">All Roles</a></li>
+                                    <li><a href="{{ route('user.pending.orders')}}">Pending Orders</a></li>
+                                    <li><a href="{{ route('user.success.orders')}}">Success Orders</a></li>
+                                   
                                 </ul>
                             </li>
 
-                            <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="fas fa-user"></i><span> Users </span><span class="pull-right"><i class="md md-add"></i></span></a>
-                                <ul class="list-unstyled">
-                                    <li><a href="/Inventory/user/create">Add User</a></li>
-                                    <li><a href="/Inventory/users">All Users</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="has_sub">
+                            <!-- <li class="has_sub">
                                 <a href="#" class="waves-effect"><i class="fas fa-users"></i><span> Employees </span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="{{ route('add.employee')}}">Add Employee</a></li>
@@ -227,8 +220,8 @@
                                 <ul class="list-unstyled">
                                     <li><a href="{{ route('add.advancedsalary')}}">Add Advanced Salary</a></li>
                                     <li><a href="{{ route('all.advancedsalary')}}">All Advanced Salary</a></li>
-                                   {{--  <li><a href="{{ route('pay.salary')}}">Pay Salary</a></li>
-                                    <li><a href="">last Month Salary</a></li> --}}
+                                    <li><a href="{{ route('pay.salary')}}">Pay Salary</a></li>
+                                    <li><a href="">last Month Salary</a></li>
                                 </ul>
                             </li>
 
@@ -261,8 +254,8 @@
                                 <ul class="list-unstyled">
                                     <li><a href="{{ route('add.expense')}}">Add Expense</a></li>
                                     <li><a href="{{ route('today.expense')}}">Today Expense</a></li>
-                                    {{--  <li><a href="{{ route('monthly.expense')}}">Monthly Expense</a></li>
-                                     <li><a href="{{ route('yearly.expense')}}">Yearly Expense</a></li> --}}
+                                     <li><a href="{{ route('monthly.expense')}}">Monthly Expense</a></li>
+                                     <li><a href="{{ route('yearly.expense')}}">Yearly Expense</a></li>
                                 </ul>
                             </li>
 
@@ -279,7 +272,7 @@
                                 <a href="#" class="waves-effect"><i class="fas fa-balance-scale"></i><span> Sales Report</span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="{{ route('today.sales')}}">Today Sales</a></li>
-                                     {{-- <li><a href="{{ route('monthly.sales')}}">Monthly Sales</a></li>  --}} 
+                                     <li><a href="{{ route('monthly.sales')}}">Monthly Sales</a></li>  
                                 </ul>
                             </li>
 
@@ -291,17 +284,17 @@
                                      
                                 </ul>
                             </li>
-                           {{--  <li class="has_sub">
+                            <li class="has_sub">
                                 <a href="#" class="waves-effect"><i class="fas fa-cog"></i><span> Setting</span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="{{ route('setting')}}">Setting</a></li>
                                    
                                 </ul>
-                            </li> --}}
+                            </li>
 
                             <li>
                                 <a href="{{ route('stock')}}" class="waves-effect active"><i class="md md-home"></i><span> Stock </span></a>
-                            </li>
+                            </li> -->
 
 
 
