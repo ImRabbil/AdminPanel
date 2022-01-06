@@ -33,7 +33,7 @@
 															<th>DB ID</th>
 															<th>Name</th>
 															<th>Created_at</th>
-															<th>Option</th>
+															{{-- <th>Option</th> --}}
 														</tr>
                                                     </thead>
 
@@ -45,11 +45,11 @@
 															<td>{{$role->id}}</td>
 															<td>{{$role->name}}</td>
 															<td>{{$role->created_at->diffForHumans()}}</td>
-															<td>
+															{{-- <td>
 																<a href="/Inventory/role/{{$role->id}}/user" class="btn btn-primary">
 																	<i class="fa fa-eye"></i>
 																</a>
-															</td>
+															</td> --}}
 														</tr>
 
 														@endforeach

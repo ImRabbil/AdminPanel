@@ -70,8 +70,8 @@
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ route('login') }}">Admin Login</a>
-                        <a href="{{ route('login') }}">Employee Login</a>
+                        <a href="{{ route('login') }}"> Login</a>
+                     
 
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}">Register</a>
@@ -82,7 +82,7 @@
 
             <div class="content">
                 <div class="">
-                    <h1>SuperShop Management System</h1>
+                    <h1>Super Shop Management System</h1>
                     
                 </div>
 

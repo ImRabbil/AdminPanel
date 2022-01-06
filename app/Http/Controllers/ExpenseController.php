@@ -13,11 +13,11 @@ class ExpenseController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('admin');
     }
     public function AddExpense()
     {
-        return view('add_expense');
+        return view('admin.add_expense');
     }
     public function InsertExpense(Request $request)
     {

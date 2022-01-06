@@ -34,7 +34,7 @@
 
          <div class="form-group">
          <div class="col-xs-12">
-              <input id="password" type="password" name="password" placeholder="Enter Re-password" class="form-control">
+              <input id="password" type="password" name="password_confirmation" placeholder="Enter Re-password" class="form-control">
          </div>
           </div>
 

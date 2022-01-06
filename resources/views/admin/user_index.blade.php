@@ -39,7 +39,7 @@
 															<th>Role</th>
 															<th>Email</th>
 															<th>Created_at</th>
-															<th>Option</th>
+															{{-- <th>Option</th> --}}
 														</tr>
                                                     </thead>
 
@@ -53,9 +53,9 @@
 															<td>{{$user->role->name}}</td>
 															<td>{{$user->email}}</td>
 															<td>{{$user->created_at}}</td>
-															<td>
+															{{-- <td>
 																
-															</td>
+															</td> --}}
 														</tr>
 
 														@endforeach

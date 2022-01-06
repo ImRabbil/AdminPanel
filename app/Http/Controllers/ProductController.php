@@ -16,7 +16,7 @@ class ProductController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('admin');
     }
 
     public function AddProduct()
@@ -225,11 +225,11 @@ class ProductController extends Controller
 
 
 
-         public function Barcode(){
-            $product = DB::table('products')->get();
-        return view('barcode',compact('product'));
+        //  public function Barcode(){
+        //     $product = DB::table('products')->get();
+        // return view('barcode',compact('product'));
 
-         }
+        //  }
 
 
 }

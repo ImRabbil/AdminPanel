@@ -53,15 +53,17 @@ public function user_create(){
 }
 public function user_store(Request $request){
     $this->validate($request, [
-        'name' => 'required',
-        'email' => 'required|unique:users.email',
-        'password' => 'required|confirmed'
+        'name' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        'password' => ['required', 'string', 'min:8', 'confirmed'],
     ]);
+    
     if($request->input('role_id')!= ''){
         $user = new User;
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password'));
+        $user->role_id = $request->input('role_id');
         $user->save();
         return redirect()->route('admin.user_index');
     }else{
